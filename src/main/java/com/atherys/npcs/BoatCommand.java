@@ -28,6 +28,7 @@ public class BoatCommand implements ParameterizedCommand {
         Vector3d location = args.<Vector3d>getOne("location").get();
         Boat boat = (Boat) player.getWorld().createEntity(EntityTypes.BOAT, location);
         boat.offer(Keys.INVULNERABLE, true);
+        boat.setRotation(player.getRotation());
 
         player.getWorld().spawnEntity(boat);
         player.setVehicle(boat);
