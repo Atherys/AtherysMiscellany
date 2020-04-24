@@ -1,4 +1,4 @@
-package com.atherys.npcs;
+package com.atherys.misc;
 
 import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.api.entity.vehicle.Boat;
@@ -10,6 +10,8 @@ import org.spongepowered.api.event.filter.cause.Root;
 public class BoatListener {
     @Listener
     public void onBoatDismount(RideEntityEvent.Dismount event, @Root Player player, @Getter("getTargetEntity") Boat boat) {
-        boat.remove();
+        if (boat.getPassengers().get(0) == player) {
+            boat.remove();
+        }
     }
 }

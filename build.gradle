@@ -20,6 +20,7 @@ repositories {
 dependencies {
     compile 'org.spongepowered:spongeapi:7.1.0'
     compile 'com.github.Atherys-Horizons:AtherysCore:1.18.5'
+    compile 'com.github.Atherys-Horizons:AtherysRPG:master-SNAPSHOT'
 }
 
 version = "1.0.0"
@@ -27,7 +28,7 @@ group = "com.atherys.miscellany"
 archivesBaseName = "AtherysMiscellany"
 
 minecraft {
-    version = "1.12.2-14.23.5.2768"
+    version = "1.12.2-14.23.5.2838"
     mappings = "stable_39"
 }
 
