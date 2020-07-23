@@ -16,13 +16,13 @@ buildscript {
     }
 }
 
-apply plugin: 'net.minecraftforge.gradle.forge'
-apply plugin: 'org.spongepowered.mixin'
-
-repositories {
-    maven { url = 'https://repo.spongepowered.org/maven' }
-    maven { url = 'https://jitpack.io' }
+plugins {
+    id 'java'
+    id 'org.spongepowered.plugin' version '0.9.0'
 }
+
+apply plugin: 'org.spongepowered.mixin'
+apply plugin: 'net.minecraftforge.gradle.forge'
 
 dependencies {
     compile 'org.spongepowered:spongeapi:7.1.0'
@@ -31,9 +31,10 @@ dependencies {
     compile 'com.github.Atherys-Horizons:AtherysRPG:master-SNAPSHOT'
 }
 
-version = "1.0.0"
-group = "com.atherys.miscellany"
-archivesBaseName = "AtherysMiscellany"
+repositories {
+    maven { url = 'https://repo.spongepowered.org/maven' }
+    maven { url = 'https://jitpack.io' }
+}
 
 minecraft {
     version = "1.12.2-14.23.5.2838"
@@ -42,7 +43,7 @@ minecraft {
 }
 
 mixin {
-    add sourceSets.main, "mixins.pluginmixintest.refmap.json"
+    add sourceSets.main, "mixins.atherysmiscellany.refmap.json"
 }
 
 jar {
@@ -52,6 +53,10 @@ jar {
             'FMLCorePluginContainsFMLMod': 'true',
     )
 }
+
+version = "1.0.0"
+group = "com.atherys.miscellany"
+archivesBaseName = "AtherysMiscellany"
 
 processResources {
     // this will ensure that this task is redone when the versions change.
