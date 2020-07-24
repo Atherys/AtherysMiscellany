@@ -8,14 +8,14 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(NetHandlerPlayServer.class)
-public class MixinSpamKick {
+public abstract class MixinSpamKick {
 
     @Shadow
     private int chatSpamThresholdCount;
 
-    @Inject(method = "processChatMessage", at = @At("HEAD"))
+    @Inject(method = "processChatMessage", at = @At("RETURN"))
     private void checkMessageCount(CallbackInfo info) {
-        this.chatSpamThresholdCount =- 20;
+        this.chatSpamThresholdCount -= 10;
     }
 
 }
