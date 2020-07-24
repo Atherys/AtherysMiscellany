@@ -11,6 +11,8 @@ import org.spongepowered.api.event.game.state.GameInitializationEvent;
 import org.spongepowered.api.plugin.Dependency;
 import org.spongepowered.api.plugin.Plugin;
 
+import java.io.IOException;
+
 import static com.atherys.misc.AtherysMiscellany.*;
 
 @Plugin(
@@ -31,9 +33,17 @@ public class AtherysMiscellany {
 
     private static AtherysMiscellany instance;
 
+    private MiscellanyConfig config;
+
     @Listener
     public void onInit(GameInitializationEvent event) {
         instance = this;
+
+        try {
+            config = new MiscellanyConfig();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         Sponge.getEventManager().registerListeners(this, new BoatListener());
         Sponge.getEventManager().registerListeners(this, new NpcListener());
@@ -45,7 +55,15 @@ public class AtherysMiscellany {
         }
     }
 
+    public static AtherysMiscellany getInstance() {
+        return instance;
+    }
+
     public static Logger getLogger() {
-        return instance.logger;
+        return getInstance().logger;
+    }
+
+    public static MiscellanyConfig getConfig() {
+        return getInstance().config;
     }
 }
