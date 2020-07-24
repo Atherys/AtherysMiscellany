@@ -1,4 +1,4 @@
-package com.atherys.misc;
+package com.atherys.misc.npcs;
 
 import net.minecraft.entity.Entity;
 import noppes.npcs.api.NpcAPI;
@@ -16,7 +16,6 @@ public class NpcListener {
 
             if (e.typeOf(EntityType.NPC)) {
                 ICustomNpc npc = (ICustomNpc) e;
-                npc.getInventory();
                 npc.getMCEntity().setCustomNameTag(npc.getDisplay().getName());
             }
         });
