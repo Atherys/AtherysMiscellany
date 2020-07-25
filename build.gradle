@@ -51,6 +51,7 @@ jar {
             'TweakClass': 'org.spongepowered.asm.launch.MixinTweaker',
             'MixinConfigs': 'mixins.atherysmiscellany.json',
             'FMLCorePluginContainsFMLMod': 'true',
+            'ForceLoadAsMod': 'true',
     )
 }
 

@@ -1,5 +1,6 @@
-package com.atherys.misc;
+package com.atherys.misc.mixin;
 
+import com.atherys.misc.AtherysMiscellany;
 import net.minecraft.network.NetHandlerPlayServer;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -15,7 +16,7 @@ public abstract class MixinSpamKick {
 
     @Inject(method = "processChatMessage", at = @At("RETURN"))
     private void checkMessageCount(CallbackInfo info) {
-        this.chatSpamThresholdCount -= 10;
+        this.chatSpamThresholdCount -= (20 - AtherysMiscellany.getConfig().THRESHOLD_COUNT_PER_MESSAGE);
     }
 
 }
