@@ -45,6 +45,8 @@ public class MiscellanyConfig extends PluginConfig {
     // If the total threshold count hits 200, the player is kicked for spam.
     public int THRESHOLD_COUNT_PER_MESSAGE = 10;
 
+    public float ATTACK_CANCEL_THRESHOLD = 0.75f;
+
     public List<NpcConfig> NPCS = new ArrayList<>();
 
     protected MiscellanyConfig() throws IOException {
