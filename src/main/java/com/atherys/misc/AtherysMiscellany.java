@@ -2,19 +2,16 @@ package com.atherys.misc;
 
 import com.atherys.core.AtherysCore;
 import com.atherys.core.command.CommandService;
+import com.atherys.misc.npcs.NpcListener;
 import com.google.inject.Inject;
-import net.minecraft.item.ItemStack;
-import net.minecraft.server.MinecraftServer;
 import org.slf4j.Logger;
-import org.spongepowered.api.Server;
 import org.spongepowered.api.Sponge;
-import org.spongepowered.api.effect.particle.ParticleTypes;
 import org.spongepowered.api.event.Listener;
-import org.spongepowered.api.event.game.state.GameConstructionEvent;
 import org.spongepowered.api.event.game.state.GameInitializationEvent;
-import org.spongepowered.api.event.game.state.GamePreInitializationEvent;
 import org.spongepowered.api.plugin.Dependency;
 import org.spongepowered.api.plugin.Plugin;
+
+import java.io.IOException;
 
 import static com.atherys.misc.AtherysMiscellany.*;
 
@@ -36,11 +33,17 @@ public class AtherysMiscellany {
 
     private static AtherysMiscellany instance;
 
+    private MiscellanyConfig config;
+
     @Listener
     public void onInit(GameInitializationEvent event) {
         instance = this;
-        //MinecraftForge.EVENT_BUS.register(new NpcListener());
 
+        try {
+            config = new MiscellanyConfig();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         Sponge.getEventManager().registerListeners(this, new BoatListener());
         Sponge.getEventManager().registerListeners(this, new NpcListener());
@@ -52,7 +55,15 @@ public class AtherysMiscellany {
         }
     }
 
+    public static AtherysMiscellany getInstance() {
+        return instance;
+    }
+
     public static Logger getLogger() {
-        return instance.logger;
+        return getInstance().logger;
+    }
+
+    public static MiscellanyConfig getConfig() {
+        return getInstance().config;
     }
 }

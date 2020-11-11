@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "minVersion": "0.7.10",
+  "package": "com.atherys.misc.mixin",
+  "refmap": "mixins.atherysmiscellany.refmap.json",
+  "target": "@env(DEFAULT)",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "MixinSpamKick",
+    "MixinEntityLivingBase"
+  ]
+}
