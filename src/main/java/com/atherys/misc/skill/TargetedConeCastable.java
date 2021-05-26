@@ -24,23 +24,6 @@ public interface TargetedConeCastable extends TargetedCastable {
 
         if (nearby.isEmpty()) throw CastErrors.noTarget();
 
-        /*
-        BlockRay<World> blockRay = BlockRay.from(user).distanceLimit(range).build();
-        Set<Vector3i> locations = new HashSet<>();
-
-        // Cast ray once so we know what blocks are visible
-        while (blockRay.hasNext()) {
-            BlockRayHit<World> blockRayHit = blockRay.next();
-            BlockType blockType = blockRayHit.getExtent().getBlockType(blockRayHit.getBlockPosition());
-
-            if (!AtherysSkills.getInstance().getConfig().PASSABLE_BLOCKS.contains(blockType)) {
-                break;
-            }
-
-            locations.add(blockRayHit.getBlockPosition());
-        }
-        */
-
         final Vector3d rotation = user.getHeadRotation();
         final Vector3d axis = Quaterniond.fromAxesAnglesDeg(rotation.getX(), -rotation.getY(), rotation.getZ()).getDirection();
         final Vector3d userPosition = user.getLocation().getPosition();
@@ -48,6 +31,7 @@ public interface TargetedConeCastable extends TargetedCastable {
         Living finalTarget = null;
         double differenceSquared = Double.MAX_VALUE;
 
+        double angleCos = Math.cos(Math.toRadians(getAngle(user)));
         for (Living target : nearby) {
             if (target == user) continue;
 
@@ -57,7 +41,7 @@ public interface TargetedConeCastable extends TargetedCastable {
             double dot = axis.dot(between.normalize());
 
             AtherysSkills.getInstance().getLogger().info("Dot product: {}", dot);
-            if (dot > Math.cos(getAngle(user)) && ((EntityLiving) user).canEntityBeSeen((Entity) target)) {
+            if (dot > angleCos && ((EntityLiving) user).canEntityBeSeen((Entity) target)) {
                 double lengthSquared = between.lengthSquared();
                 if (finalTarget == null || lengthSquared < differenceSquared) {
                     differenceSquared = lengthSquared;
@@ -74,6 +58,6 @@ public interface TargetedConeCastable extends TargetedCastable {
     }
 
     default double getAngle(Living user) {
-        return 0.08726646;
+        return 15;
     }
 }
