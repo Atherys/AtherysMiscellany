@@ -26,14 +26,14 @@ apply plugin: 'org.spongepowered.mixin'
 
 dependencies {
     compile 'org.spongepowered:spongeapi:7.1.0'
-    compile 'org.spongepowered:mixin:0.7.11-SNAPSHOT'
-    compile 'com.github.Atherys-Horizons:AtherysCore:1.18.5'
-    compile 'com.github.Atherys-Horizons:AtherysRPG:master-SNAPSHOT'
+    compile 'org.spongepowered:mixin:0.8.3-SNAPSHOT'
+    compile 'com.atherys:AtherysCore:2.0.0'
+    compile 'com.atherys:AtherysRPG:2.2.2'
 }
 
 repositories {
     maven { url = 'https://repo.spongepowered.org/maven' }
-    maven { url = 'https://jitpack.io' }
+    maven { url = 'https://repo.atherys.com' }
 }
 
 minecraft {
