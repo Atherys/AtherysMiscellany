@@ -3,25 +3,16 @@ package com.atherys.misc;
 import com.atherys.core.AtherysCore;
 import com.atherys.core.command.CommandService;
 import com.atherys.misc.npcs.NpcListener;
-import com.atherys.rpg.AtherysRPG;
 import com.google.inject.Inject;
-import net.minecraft.world.WorldServer;
-import noppes.npcs.api.NpcAPI;
-import noppes.npcs.api.entity.IEntity;
 import org.slf4j.Logger;
 import org.spongepowered.api.Sponge;
-import org.spongepowered.api.entity.Entity;
-import org.spongepowered.api.entity.living.Living;
 import org.spongepowered.api.event.Listener;
-import org.spongepowered.api.event.Order;
 import org.spongepowered.api.event.game.state.GameInitializationEvent;
 import org.spongepowered.api.event.game.state.GameStartedServerEvent;
 import org.spongepowered.api.plugin.Dependency;
 import org.spongepowered.api.plugin.Plugin;
-import org.spongepowered.api.scheduler.Task;
 
 import java.io.IOException;
-import java.util.concurrent.TimeUnit;
 
 import static com.atherys.misc.AtherysMiscellany.*;
 

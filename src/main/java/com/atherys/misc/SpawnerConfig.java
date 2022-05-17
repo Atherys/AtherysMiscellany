@@ -3,8 +3,6 @@ package com.atherys.misc;
 import com.flowpowered.math.vector.Vector3d;
 import ninja.leaping.configurate.objectmapping.Setting;
 import ninja.leaping.configurate.objectmapping.serialize.ConfigSerializable;
-import org.spongepowered.api.world.Location;
-import org.spongepowered.api.world.World;
 
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;

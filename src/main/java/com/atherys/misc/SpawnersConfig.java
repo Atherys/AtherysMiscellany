@@ -1,7 +1,6 @@
 package com.atherys.misc;
 
 import com.atherys.core.utils.PluginConfig;
-import com.atherys.misc.SpawnerConfig;
 import com.google.inject.Singleton;
 import ninja.leaping.configurate.objectmapping.Setting;
 

@@ -2,15 +2,12 @@ package com.atherys.misc;
 
 import com.atherys.misc.MiscellanyConfig.NpcConfig;
 import com.atherys.rpg.AtherysRPG;
-import com.atherys.misc.SpawnersConfig;
-import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import net.minecraft.world.WorldServer;
 import noppes.npcs.api.IWorld;
 import noppes.npcs.api.NpcAPI;
 import noppes.npcs.api.entity.IEntity;
 import org.spongepowered.api.Sponge;
-import org.spongepowered.api.entity.EntityArchetype;
 import org.spongepowered.api.entity.living.Living;
 import org.spongepowered.api.event.CauseStackManager;
 import org.spongepowered.api.event.cause.EventContextKeys;
