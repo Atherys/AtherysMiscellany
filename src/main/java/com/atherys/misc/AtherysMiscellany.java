@@ -3,12 +3,21 @@ package com.atherys.misc;
 import com.atherys.core.AtherysCore;
 import com.atherys.core.command.CommandService;
 import com.atherys.misc.npcs.NpcListener;
+import com.atherys.misc.spawner.SpawnerService;
+import com.atherys.misc.spawner.SpawnersConfig;
+import com.google.common.collect.Lists;
 import com.google.inject.Inject;
 import org.slf4j.Logger;
 import org.spongepowered.api.Sponge;
+import org.spongepowered.api.data.key.Keys;
+import org.spongepowered.api.effect.potion.PotionEffect;
+import org.spongepowered.api.effect.potion.PotionEffectTypes;
+import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.api.event.Listener;
+import org.spongepowered.api.event.filter.Getter;
 import org.spongepowered.api.event.game.state.GameInitializationEvent;
 import org.spongepowered.api.event.game.state.GameStartedServerEvent;
+import org.spongepowered.api.event.network.ClientConnectionEvent;
 import org.spongepowered.api.plugin.Dependency;
 import org.spongepowered.api.plugin.Plugin;
 
@@ -68,6 +77,20 @@ public class AtherysMiscellany {
     @Listener
     public void onStart(GameStartedServerEvent event) {
         spawnerService.init();
+    }
+
+    @Listener
+    public void onPlayerSpawn(ClientConnectionEvent.Join event, @Getter("getTargetEntity") Player source) {
+        if (!source.hasPlayedBefore()) {
+            source.offer(
+                    Keys.POTION_EFFECTS,
+                    Lists.newArrayList(
+                            PotionEffect.of(PotionEffectTypes.MINING_FATIGUE, 7, 20),
+                            PotionEffect.of(PotionEffectTypes.BLINDNESS, 3, 40),
+                            PotionEffect.of(PotionEffectTypes.NAUSEA, 7, 40)
+                    )
+            );
+        }
     }
 
     public static AtherysMiscellany getInstance() {

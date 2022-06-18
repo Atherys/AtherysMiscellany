@@ -1,4 +1,4 @@
-package com.atherys.misc;
+package com.atherys.misc.spawner;
 
 import com.flowpowered.math.vector.Vector3d;
 import ninja.leaping.configurate.objectmapping.Setting;

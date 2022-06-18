@@ -1,4 +1,4 @@
-package com.atherys.misc;
+package com.atherys.misc.spawner;
 
 import com.atherys.core.utils.PluginConfig;
 import com.google.inject.Singleton;
@@ -11,7 +11,7 @@ import java.util.List;
 @Singleton
 public class SpawnersConfig extends PluginConfig {
     @Setting("spawners")
-    public List<com.atherys.misc.SpawnerConfig> SPAWNERS = new ArrayList<>();
+    public List<SpawnerConfig> SPAWNERS = new ArrayList<>();
 
     {
         SPAWNERS.add(new SpawnerConfig());

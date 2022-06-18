@@ -1,5 +1,6 @@
-package com.atherys.misc;
+package com.atherys.misc.spawner;
 
+import com.atherys.misc.AtherysMiscellany;
 import com.atherys.misc.MiscellanyConfig.NpcConfig;
 import com.atherys.rpg.AtherysRPG;
 import com.google.inject.Singleton;
@@ -72,7 +73,7 @@ public class SpawnerService {
                     for (int i = 0; i < toSpawn; i++) {
                         double x = location.getX() + ThreadLocalRandom.current().nextDouble(-spawner.radius, spawner.radius);
                         double z = location.getZ() + ThreadLocalRandom.current().nextDouble(-spawner.radius, spawner.radius);
-                        double y = location.getExtent().getHighestYAt((int) x, (int) z);
+                        double y = location.getY();
 
                         spawnMob(spawner, x, y, z);
                     }
