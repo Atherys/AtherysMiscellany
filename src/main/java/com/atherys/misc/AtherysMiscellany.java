@@ -3,6 +3,7 @@ package com.atherys.misc;
 import com.atherys.core.AtherysCore;
 import com.atherys.core.command.CommandService;
 import com.atherys.misc.npcs.NpcListener;
+import com.atherys.misc.spawner.CreateSpawnerCommand;
 import com.atherys.misc.spawner.SpawnerService;
 import com.atherys.misc.spawner.SpawnersConfig;
 import com.google.common.collect.Lists;
@@ -69,6 +70,7 @@ public class AtherysMiscellany {
 
         try {
             AtherysCore.getCommandService().register(new BoatCommand(), this);
+            AtherysCore.getCommandService().register(new CreateSpawnerCommand(), this);
         } catch (CommandService.AnnotatedCommandException e) {
             e.printStackTrace();
         }
